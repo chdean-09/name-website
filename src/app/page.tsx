@@ -389,7 +389,7 @@ export default function Home() {
             {/* Logo and Description */}
             <div className="md:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
-                <Image src="/logo.png" alt="N.A.M.E Logo" width={40} height={40} className="rounded-lg" />
+                <Image src="/logo-only.png" alt="N.A.M.E Logo" width={40} height={40} className="rounded-lg" />
                 <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-400 dark:to-indigo-500 bg-clip-text text-transparent">
                   N.A.M.E
                 </span>
