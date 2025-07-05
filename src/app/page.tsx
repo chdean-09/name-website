@@ -1,42 +1,64 @@
-import { ContainerScroll } from "@/components/ui/container-scroll-animation";
-import { TypewriterEffect } from "@/components/ui/typewriter-effect";
-import Image from "next/image";
+"use client"
+
+import { ContainerScroll } from "@/components/ui/container-scroll-animation"
+import { TypewriterEffect } from "@/components/ui/typewriter-effect"
+import Image from "next/image"
+import { motion } from "framer-motion"
+import { Shield, Smartphone, Wifi, Lock } from "lucide-react"
 
 export default function Home() {
-  // const features = [
-  //   {
-  //     name: 'Push to deploy.',
-  //     description:
-  //       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
-  //     icon: Lock,
-  //   },
-  //   {
-  //     name: 'SSL certificates.',
-  //     description: 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
-  //     icon: BellRing,
-  //   },
-  //   {
-  //     name: 'Database backups.',
-  //     description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
-  //     icon: CalendarCheck,
-  //   },
-  // ]
-
   const words = [
     {
       text: "N.A.M.E",
-      className: "text-blue-500 dark:text-blue-500 text-4xl md:text-[6rem] font-bold mt-1 leading-none",
+      className: "relative bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 dark:from-blue-400 dark:via-purple-400 dark:to-cyan-400 bg-clip-text text-transparent text-4xl md:text-[6rem] font-black mt-1 leading-none",
     },
-  ];
+  ]
+
+  const acronymLetters = [
+    {
+      letter: "N",
+      word: "Next-gen",
+      description: "Cutting-edge technology for modern homes",
+      icon: Smartphone,
+      color: "from-blue-500 to-purple-600",
+    },
+    {
+      letter: "A",
+      word: "Access",
+      description: "Seamless entry control at your fingertips",
+      icon: Lock,
+      color: "from-purple-500 to-pink-500",
+    },
+    {
+      letter: "M",
+      word: "Management",
+      description: "Intelligent monitoring and administration",
+      icon: Shield,
+      color: "from-orange-400 to-pink-400",
+    },
+    {
+      letter: "E",
+      word: "Entry",
+      description: "Smart door solutions for secure living",
+      icon: Wifi,
+      color: "from-pink-400 to-purple-500",
+    },
+  ]
 
   return (
     <div className="overflow-hidden">
       <ContainerScroll
         titleComponent={
           <>
-            <h1 className="-mt-10 text-4xl font-semibold text-black dark:text-white">
-              Introducing <br />
-              <TypewriterEffect words={words} />
+            <h1 className="-mt-10 text-4xl font-semibold">
+              <span className="bg-gradient-to-r from-slate-600 to-slate-800 dark:from-slate-300 dark:to-white bg-clip-text text-transparent">
+                Introducing
+              </span>
+              <br />
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 blur-xl rounded-lg"></div>
+                <TypewriterEffect words={words} />
+              </div>
             </h1>
           </>
         }
@@ -50,21 +72,88 @@ export default function Home() {
           draggable={false}
         />
       </ContainerScroll>
-      <div className="pb-24 sm:pb-32 -mt-12 sm:mt-0">
+
+      {/* Enhanced N.A.M.E Section */}
+      <div className="pb-24 sm:pb-32 -mt-12 sm:mt-0 bg-gradient-to-br">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-base/7 font-semibold text-blue-600 dark:text-blue-400 mb-4">
+              What does N.A.M.E stand for?
+            </h2>
+            <p className="text-4xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-8">More than just a name</p>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Every letter represents our commitment to revolutionizing home security
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {acronymLetters.map((item, index) => {
+              const IconComponent = item.icon
+              return (
+                <motion.div
+                  key={item.letter}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  className="relative group"
+                >
+                  <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-slate-700 group-hover:scale-105">
+                    <div
+                      className={`w-16 h-16 rounded-full bg-gradient-to-r ${item.color} flex items-center justify-center mb-6 mx-auto`}
+                    >
+                      <IconComponent className="w-8 h-8 text-white" />
+                    </div>
+                    <div className="text-center">
+                      <div
+                        className={`text-6xl font-black bg-gradient-to-r ${item.color} bg-clip-text text-transparent mb-2`}
+                      >
+                        {item.letter}
+                      </div>
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">{item.word}</h3>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{item.description}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </div>
+
+          {/* Animated Full Acronym */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center bg-white dark:bg-slate-800 rounded-3xl p-12 shadow-2xl border border-gray-100 dark:border-slate-700"
+          >
+            <div className="text-5xl sm:text-7xl font-black mb-6 bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-400 dark:to-indigo-500 bg-clip-text text-transparent">
+              N.A.M.E
+            </div>
+            <div className="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              <span className="text-blue-600 dark:text-blue-400">Next-gen</span>{" "}
+              <span className="text-purple-600 dark:text-purple-400">Access</span>{" "}
+              <span className="text-orange-500 dark:text-orange-400">Management</span>{" "}
+              <span className="text-pink-500 dark:text-pink-400">Entry</span>
+            </div>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              The future of home security is here. Experience the perfect blend of innovation, accessibility,
+              intelligent management, and seamless entry control.
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
+      <div className="pb-24 sm:pb-32">
         <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-          <h2 className="text-center text-base/7 font-semibold text-indigo-600">Smart & Secure</h2>
+          <h2 className="text-center text-base/7 font-semibold text-blue-600 dark:text-blue-400">Smart & Secure</h2>
           <p className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
             Everything you need for a smarter door lock
           </p>
           <p className="mt-4 text-center text-base text-gray-600 dark:text-gray-400">
-            Powered by <strong className="text-gray-900 dark:text-white">N.A.M.E</strong> — <em>
-              <span className="font-bold text-gray-900 dark:text-white">N</span>ext-gen {" "}
-              <span className="font-bold text-gray-900 dark:text-white">A</span>ccess {" "}
-              <span className="font-bold text-gray-900 dark:text-white">M</span>anagement {" "}
-              <span className="font-bold text-gray-900 dark:text-white">E</span>ntry
-              </em>
+            Powered by <strong className="text-gray-900 dark:text-white">N.A.M.E</strong> — your complete smart home
+            security solution
           </p>
-
           <div className="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
             {/* Mobile Control */}
             <div className="relative lg:row-span-2">
@@ -75,7 +164,8 @@ export default function Home() {
                     Mobile Control
                   </p>
                   <p className="mt-2 max-w-lg text-sm/6 text-gray-700 dark:text-gray-300 max-lg:text-center">
-                    Lock and unlock your door from anywhere using your smartphone. Real-time status updates and intuitive UI.
+                    Lock and unlock your door from anywhere using your smartphone. Real-time status updates and
+                    intuitive UI.
                   </p>
                 </div>
                 <div className="@container relative min-h-120 w-full grow max-lg:mx-auto max-lg:max-w-sm">
@@ -92,7 +182,6 @@ export default function Home() {
               </div>
               <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm outline outline-black/5 lg:rounded-l-4xl" />
             </div>
-
             {/* Real-Time Sync */}
             <div className="relative max-lg:row-start-1">
               <div className="absolute inset-px rounded-lg max-lg:rounded-t-4xl" />
@@ -105,17 +194,18 @@ export default function Home() {
                     WebSockets keep your device state and mobile app perfectly in sync—no refresh needed.
                   </p>
                 </div>
-                <div className="flex flex-1 items-center justify-center px-8 max-lg:pt-10 max-lg:pb-12 sm:px-10 lg:pb-2">
-                  <img
+                <div className="@container flex flex-1 items-center max-lg:py-6 lg:pb-2 justify-center">
+                  <Image
                     alt="Real-Time Performance"
-                    src="/realtime-sync.png"
-                    className="w-full max-lg:max-w-xs"
+                    width={200}
+                    height={200}
+                    src="/realtimesync.gif"
+                    className="h-[min(152px,40cqw)] object-contain"
                   />
                 </div>
               </div>
               <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm outline outline-black/5 max-lg:rounded-t-4xl" />
             </div>
-
             {/* Trusted Security */}
             <div className="relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2">
               <div className="absolute inset-px rounded-lg" />
@@ -128,17 +218,18 @@ export default function Home() {
                     Secure pairing, HTTPS communication, and user-specific access ensure your home is always protected.
                   </p>
                 </div>
-                <div className="@container flex flex-1 items-center max-lg:py-6 lg:pb-2">
-                  <img
+                <div className="@container flex flex-1 items-center max-lg:py-6 lg:pb-6 justify-center">
+                  <Image
                     alt="Security"
-                    src="/security-esp.png"
-                    className="h-[min(152px,40cqw)] object-cover"
+                    width={400}
+                    height={400}
+                    src="/security.png"
+                    className="h-[min(152px,40cqw)] object-contain"
                   />
                 </div>
               </div>
               <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm outline outline-black/5" />
             </div>
-
             {/* Seamless Integration */}
             <div className="relative lg:row-span-2">
               <div className="absolute inset-px rounded-lg max-lg:rounded-b-4xl lg:rounded-r-4xl" />
@@ -148,7 +239,8 @@ export default function Home() {
                     Seamless Integration
                   </p>
                   <p className="mt-2 max-w-lg text-sm/6 text-gray-700 dark:text-gray-300 max-lg:text-center">
-                    Easily connect your smart lock to your home Wi-Fi and mobile devices. Setup takes minutes with Bluetooth pairing and auto-network discovery.
+                    Easily connect your smart lock to your home Wi-Fi and mobile devices. Setup takes minutes with
+                    Bluetooth pairing and auto-network discovery.
                   </p>
                 </div>
                 <div className="@container relative min-h-120 w-full grow max-lg:mx-auto max-lg:max-w-sm">
@@ -156,8 +248,8 @@ export default function Home() {
                     <Image
                       width={700}
                       height={700}
-                      alt=""
-                      src="/app-picture.jpg"
+                      alt="placeholder"
+                      src="/"
                       className="size-full object-cover object-top"
                     />
                   </div>
@@ -168,7 +260,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
     </div>
-  );
+  )
 }

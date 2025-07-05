@@ -36,7 +36,7 @@ export const TypewriterEffect = ({
           width: "fit-content",
         },
         {
-          duration: 0.3,
+          duration: 0.25,
           delay: stagger(0.4),
           ease: "easeInOut",
         }
