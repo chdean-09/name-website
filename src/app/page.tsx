@@ -248,7 +248,7 @@ export default function Home() {
                     <Image
                       width={700}
                       height={700}
-                      alt="placeholder"
+                      alt="wala pa ko screenshot di"
                       src="/"
                       className="size-full object-cover object-top"
                     />
