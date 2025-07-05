@@ -260,6 +260,235 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Prototype Showcase Section */}
+      <div className="py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-base/7 font-semibold text-blue-600 dark:text-blue-400 mb-4">From Concept to Reality</h2>
+            <p className="text-4xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-8">Meet the Prototype</p>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Our working prototype showcases the engineering excellence behind N.A.M.E&apos;s smart lock technology
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Closed Prototype */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="bg-gradient-to-br from-slate-100 to-blue-50 dark:from-slate-800 dark:to-blue-950 rounded-3xl p-8 shadow-2xl">
+                <Image
+                  src="/prototype-closed.jpg"
+                  alt="N.A.M.E Smart Lock Prototype - Closed"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto rounded-2xl shadow-lg"
+                />
+                <div className="mt-6">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">Sleek Exterior Design</h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Clean, minimalist housing designed for seamless integration with any door. Compact form factor with
+                    durable construction.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Open Prototype */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950 dark:to-pink-950 rounded-3xl p-8 shadow-2xl">
+                <Image
+                  src="/prototype-open.png"
+                  alt="N.A.M.E Smart Lock Prototype - Internal Components"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto rounded-2xl shadow-lg"
+                />
+                <div className="mt-6">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                    Advanced Internal Components
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Powered by an ESP32 and lithium battery, this prototype uses relays to drive a solenoid lock with real-time door status from a magnetic sensor.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Technical Features */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="mt-20"
+          >
+            <div className="bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800 dark:to-blue-950 rounded-3xl p-8 lg:p-12">
+              <h3 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
+                Key Technical Features
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Smartphone className="w-8 h-8 text-white" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">ESP32 Microcontroller</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    Wi-Fi & Bluetooth-enabled dual-core chip for secure device control and real-time communication.
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Lock className="w-8 h-8 text-white" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Solenoid Lock + Relay</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    High-power solenoid lock triggered by a relay for rapid, reliable locking and unlocking.
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-orange-400 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Shield className="w-8 h-8 text-white" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">5000mAh Battery</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    Long-lasting 18650 lithium battery ensures continued operation even during power loss.
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Wifi className="w-8 h-8 text-white" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Door Status Sensor</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    Magnetic contact sensor detects if the door is open or closed in real-time.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Simple Footer */}
+      <footer className="bg-gray-50 dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800">
+        <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {/* Logo and Description */}
+            <div className="md:col-span-2">
+              <div className="flex items-center space-x-3 mb-4">
+                <Image src="/logo.png" alt="N.A.M.E Logo" width={40} height={40} className="rounded-lg" />
+                <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-400 dark:to-indigo-500 bg-clip-text text-transparent">
+                  N.A.M.E
+                </span>
+              </div>
+              <p className="text-gray-600 dark:text-gray-300 max-w-md">
+                Next-gen Access Management Entry - Revolutionizing home security with smart, connected door lock
+                technology.
+              </p>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+                Product
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
+                    Prototype
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
+                    Specifications
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+                Connect
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
+                    Contact Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
+                    Support
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
+                    Documentation
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="mt-12 pt-8 border-t border-gray-200 dark:border-slate-700">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <p className="text-gray-500 dark:text-gray-400 text-sm">© 2025 N.A.M.E. All rights reserved.</p>
+              <div className="flex space-x-6 mt-4 md:mt-0">
+                <a
+                  href="#"
+                  className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors"
+                >
+                  Privacy Policy
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors"
+                >
+                  Terms of Service
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
