@@ -248,8 +248,8 @@ export default function Home() {
                     <Image
                       width={700}
                       height={700}
-                      alt="wala pa ko screenshot di"
-                      src="/"
+                      alt="app-picture2"
+                      src="/app-picture2.jpg"
                       className="size-full object-cover object-top"
                     />
                   </div>
@@ -262,7 +262,7 @@ export default function Home() {
       </div>
 
       {/* Prototype Showcase Section */}
-      <div className="py-24 sm:py-32">
+      <div className="pb-24 sm:pb-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-base/7 font-semibold text-blue-600 dark:text-blue-400 mb-4">From Concept to Reality</h2>
