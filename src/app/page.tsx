@@ -174,7 +174,7 @@ export default function Home() {
                       width={700}
                       height={700}
                       alt=""
-                      src="/test/app-picture.jpg"
+                      src="/app-picture.jpg"
                       className="size-full object-cover object-top"
                     />
                   </div>
@@ -408,7 +408,7 @@ export default function Home() {
                   <div className="text-center mb-8">
                     <div className="w-48 h-48 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 rounded-3xl mx-auto mb-8 flex items-center justify-center shadow-lg border-4 border-white dark:border-slate-700">
                       <Image
-                        src="/test/lite.png"
+                        src="/lite.png"
                         alt="N.A.M.E Lite"
                         width={180}
                         height={180}
