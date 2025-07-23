@@ -174,7 +174,7 @@ export default function Home() {
                       width={700}
                       height={700}
                       alt=""
-                      src="/app-picture.jpg"
+                      src="/test/app-picture.jpg"
                       className="size-full object-cover object-top"
                     />
                   </div>
